@@ -1,0 +1,547 @@
+/* GPU Admin Dark Theme - Enterprise Level with Separate Panels */
+.gpu-admin-root {
+  background: #0a0a0a;
+  min-height: 100vh;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: 1px solid #333;
+  border-radius: 16px;
+  z-index: 10;
+  padding: 28px 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #0099ff, #00d4ff, #0099ff);
+}
+
+.page-title span {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 2.25rem !important;
+  letter-spacing: -0.5px;
+}
+
+.page-subtitle span {
+  color: #b0b0b0 !important;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 4px;
+  display: block;
+}
+
+.page-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.chip {
+  background: rgba(0, 157, 255, 0.15);
+  color: #00d4ff;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 12px rgba(0, 157, 255, 0.2);
+}
+
+/* Main Grid Layout */
+.gpu-grid {
+  margin-top: 0 !important;
+  gap: 24px !important;
+}
+
+/* Individual Panels */
+.panel {
+  background: linear-gradient(145deg, #1a1a1a 0%, #252525 100%) !important;
+  border: 1px solid #333 !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  padding: 24px !important;
+  height: fit-content;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0099ff, #00d4ff, #0066ff);
+  opacity: 0.8;
+}
+
+.panel:hover {
+  border-color: #444 !important;
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Panel Headers */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.panel-header .MuiTypography-subtitle1 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.panel-actions .muted {
+  color: #888 !important;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* GPU Search Panel Specific */
+.gpu-search-panel {
+  grid-column: 1;
+}
+
+/* GPU Results Panel Specific */
+.gpu-results-panel {
+  grid-column: 1;
+  margin-top: 0 !important;
+}
+
+/* Custom Deploy Panel Specific */
+.custom-deploy-panel {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+/* Individual Feature Panels */
+.close-panel,
+.deployment-panel,
+.network-panel,
+.logs-panel,
+.health-panel,
+.deployments-panel {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panel Content Areas */
+.panel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #0099ff 0%, #0066ff 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4) !important;
+  position: relative;
+  overflow: hidden;
+  font-size: 0.95rem !important;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.6) !important;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #e0e0e0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(20px);
+  font-size: 0.95rem !important;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* GPU Cards */
+.gpu-card {
+  background: linear-gradient(135deg, #252525 0%, #2d2d2d 100%) !important;
+  border: 1px solid #383838 !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  padding: 20px !important;
+  margin: 12px 0 !important;
+}
+
+.gpu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 157, 255, 0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gpu-card:hover::before {
+  opacity: 1;
+}
+
+.gpu-card:hover {
+  border-color: #0099ff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.25);
+}
+
+.gpu-card.selectable.selected {
+  border-color: #0099ff !important;
+  background: linear-gradient(135deg, rgba(0, 157, 255, 0.15) 0%, #252525 100%) !important;
+  box-shadow: 0 0 0 2px #0099ff, 0 12px 35px rgba(0, 102, 255, 0.4);
+}
+
+.gpu-card .left .MuiTypography-body2 {
+  color: #b0b0b0 !important;
+  font-size: 0.9rem;
+  margin: 4px 0;
+}
+
+.gpu-card .left .MuiTypography-strong {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.panel-meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.kv {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #b0b0b0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+/* Text Fields */
+.MuiTextField-root {
+  margin: 8px 0 !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.MuiTextField-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #0099ff !important;
+  border-width: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 153, 255, 0.1);
+}
+
+.MuiTextField-root .MuiInputLabel-root {
+  color: #b0b0b0 !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.MuiTextField-root .MuiInputLabel-root.Mui-focused {
+  color: #0099ff !important;
+}
+
+.MuiTextField-root .MuiInputBase-input {
+  color: #ffffff !important;
+  font-weight: 500;
+  padding: 14px 16px;
+}
+
+.MuiTextField-root .MuiInputBase-input::placeholder {
+  color: #666 !important;
+  font-weight: 400;
+}
+
+/* Preformatted Text */
+pre {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px;
+  padding: 20px !important;
+  color: #e0e0e0 !important;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 !important;
+  overflow-x: auto;
+  backdrop-filter: blur(20px);
+  flex: 1;
+  min-height: 120px;
+}
+
+/* Alert */
+.MuiAlert-root {
+  border-radius: 12px !important;
+  backdrop-filter: blur(20px);
+  margin-bottom: 24px;
+}
+
+.MuiAlert-standardError {
+  background: rgba(211, 47, 47, 0.15) !important;
+  border: 1px solid rgba(211, 47, 47, 0.4) !important;
+  color: #ff6b6b !important;
+  font-weight: 600;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #0099ff;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+/* Typography in Panels */
+.MuiTypography-h6 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  font-size: 1.3rem !important;
+  background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.MuiTypography-subtitle2 {
+  color: #b0b0b0 !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
+  font-size: 1rem !important;
+}
+
+/* Action Sections in Panels */
+.panel-actions-section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+/* Responsive Grid for Panels */
+@media (min-width: 1200px) {
+  .gpu-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 24px;
+  }
+  
+  .gpu-search-panel {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .gpu-results-panel {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .custom-deploy-panel {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  
+  .close-panel {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .deployment-panel {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  
+  .network-panel {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  
+  .logs-panel {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  
+  .health-panel {
+    grid-column: 1;
+    grid-row: 5;
+  }
+  
+  .deployments-panel {
+    grid-column: 2;
+    grid-row: 5;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 1199px) {
+  .gpu-grid {
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  .panel {
+    margin-bottom: 24px;
+  }
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Focus states for accessibility */
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.gpu-card:focus-visible {
+  outline: 3px solid #0099ff;
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root:focus-within {
+  outline: 3px solid rgba(0, 153, 255, 0.3);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 1000px 100%;
+}
