@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Paper, Typography, TextField, Button, Grid, Box, Alert } from '@mui/material';
-const API_BASE = import.meta.env.VITE_API_URL || 'http://llmapi.inferia.ai/api4000';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://llmapi.inferia.ai/api4000';
 import './GpuAdmin.css';
 export default function GpuAdmin() {
   const [gpusResp, setGpusResp] = useState(null);

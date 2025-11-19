@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://llmapi.inferia.ai/api4000';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://llmapi.inferia.ai/api4000';
 
 export const AuthContext = createContext();
 

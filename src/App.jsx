@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, NavLink, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink, useLocation, Navigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ChatInterface from './components/ChatInterface'
 import Home from './pages/Home'
@@ -72,25 +72,31 @@ function AnimatedRoutes() {
         <Route
           path="/chat"
           element={
-            <AnimatedPage>
-              <ChatInterface />
-            </AnimatedPage>
+            <ProtectedRoute>
+              <AnimatedPage>
+                <ChatInterface />
+              </AnimatedPage>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/admin"
           element={
-            <AnimatedPage>
-              <AdminDashboard />
-            </AnimatedPage>
+            <ProtectedRoute>
+              <AnimatedPage>
+                <AdminDashboard />
+              </AnimatedPage>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/gpu-admin"
           element={
-            <AnimatedPage>
-              <GpuAdmin />
-            </AnimatedPage>
+            <ProtectedRoute>
+              <AnimatedPage>
+                <GpuAdmin />
+              </AnimatedPage>
+            </ProtectedRoute>
           }
         />
         <Route
@@ -112,9 +118,11 @@ function AnimatedRoutes() {
         <Route
           path="/verify"
           element={
-            <AnimatedPage>
-              <Verify />
-            </AnimatedPage>
+            <ProtectedRoute>
+              <AnimatedPage>
+                <Verify />
+              </AnimatedPage>
+            </ProtectedRoute>
           }
         />
       </Routes>
@@ -132,16 +140,7 @@ export default function App() {
   <div className="app-root">
         <header className="app-header">
           <div className="logo">💬 ChatPortal</div>
-          <nav className="nav-links">
-            <NavLink to="/" end>
-                Home
-              </NavLink>
-              <NavLink to="/chat">Chat</NavLink>
-              <NavLink to="/admin">Admin</NavLink>
-              <NavLink to="/gpu-admin">GPU Admin</NavLink>
-              <NavLink to="/login">Login</NavLink>
-              <NavLink to="/signup">Signup</NavLink>
-          </nav>
+          <HeaderNav />
           <ThemeToggle />
           <HeaderControls />
         </header>
@@ -164,5 +163,35 @@ function HeaderControls(){
       <button onClick={() => logout()} style={{ padding: '6px 10px' }}>Logout</button>
     </div>
   )
+}
+
+function HeaderNav(){
+  const { user } = useAuth();
+  const isAdmin = user && user.role === 'admin';
+  return (
+    <nav className="nav-links">
+      <NavLink to="/" end>Home</NavLink>
+      {isAdmin ? (
+        <>
+          <NavLink to="/chat">Chat</NavLink>
+          <NavLink to="/admin">Admin</NavLink>
+          <NavLink to="/gpu-admin">GPU Admin</NavLink>
+        </>
+      ) : (
+        <>
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/signup">Signup</NavLink>
+        </>
+      )}
+    </nav>
+  )
+}
+
+function ProtectedRoute({ children }){
+  const { user } = useAuth();
+  if (!user || user.role !== 'admin'){
+    return <Navigate to="/login" replace />;
+  }
+  return children;
 }
 
