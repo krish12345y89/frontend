@@ -118,11 +118,9 @@ function AnimatedRoutes() {
         <Route
           path="/verify"
           element={
-            <ProtectedRoute>
-              <AnimatedPage>
-                <Verify />
-              </AnimatedPage>
-            </ProtectedRoute>
+            <AnimatedPage>
+              <Verify />
+            </AnimatedPage>
           }
         />
       </Routes>
