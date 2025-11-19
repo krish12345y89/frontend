@@ -57,19 +57,19 @@ export default function Verify(){
   }
 
   return (
-    <Container sx={{ mt: 4 }}>
-      <Paper sx={{ p: 3 }}>
-        <Typography variant="h5">Verify OTP</Typography>
+    <Container className="auth-root" sx={{ mt: 4 }}>
+      <Paper className="auth-card" elevation={6} sx={{ p: 3 }}>
+        <Typography variant="h5" className="auth-title">Verify OTP</Typography>
         <Stack spacing={2} sx={{ mt: 2 }}>
           {error && <Alert severity="error">{error}</Alert>}
           {info && <Alert severity="info">{info}</Alert>}
-          <TextField label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
-          <TextField label="OTP" fullWidth value={otp} onChange={(e) => setOtp(e.target.value)} />
-          <TextField label="Token (if provided)" fullWidth value={token} onChange={(e) => setToken(e.target.value)} />
-          <Stack direction="row" spacing={2}>
-            <Button variant="contained" onClick={handleVerify}>Verify</Button>
-            <Button variant="outlined" onClick={handleRefresh}>Refresh</Button>
-            <Button variant="outlined" color="error" onClick={handleLogout}>Logout</Button>
+          <TextField variant="outlined" label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
+          <TextField variant="outlined" label="OTP" fullWidth value={otp} onChange={(e) => setOtp(e.target.value)} />
+          <TextField variant="outlined" label="Token (if provided)" fullWidth value={token} onChange={(e) => setToken(e.target.value)} />
+          <Stack direction="row" spacing={2} className="auth-actions">
+            <Button className="auth-btn auth-btn-primary" variant="contained" onClick={handleVerify}>Verify</Button>
+            <Button className="auth-btn" variant="outlined" onClick={handleRefresh}>Refresh</Button>
+            <Button className="auth-btn auth-btn-danger" variant="outlined" color="error" onClick={handleLogout}>Logout</Button>
           </Stack>
         </Stack>
       </Paper>

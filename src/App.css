@@ -1,6 +1,6 @@
 /* App.css — DARK THEME PERFECTED: High Contrast + Readability */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-@import "./styles/vars.css";
+@import './styles/vars.css';
 
 :root {
   --header-height: 72px;
@@ -10,43 +10,75 @@
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   --border-strong: rgba(255, 255, 255, 0.15);
-  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.701);
   --border-soft: rgba(255, 255, 255, 0.05);
-  --bg-panel: rgba(15, 23, 42, 0.9);
-  --bg-card: rgba(30, 41, 59, 0.8);
+  --bg-panel: rgba(15, 23, 42, 0.824);
+  --bg-card: rgba(30, 41, 59, 0.785);
 }
 
-* { 
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body, #root { 
-  height: 100%; 
-  width: 100%; 
+/* Auth root: full-screen fixed background image with dark vignette */
+.auth-root {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: fixed;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height));
+  padding: 24px;
+  position: relative;
+  border-radius: 100px;
+  box-shadow: light black;/* fallback */
+  /* background-image: url('/assets/download.jpeg'); */
+  background-size: cover;
+  background-color: rgba(29, 29, 29, 0.966);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* ensure image stays fixed while content can scroll */
+}
+
+/* Dark vignette around the image edges to create shadow beyond image border */
+.auth-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%);
+}
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  height: 100%;
   overflow-y: auto;
+  position: fixed;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: 
-    linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background: linear-gradient(135deg, #0f172a06 0%, #1e293b02 50%, #33415506 100%);
   color: var(--text-medium);
+  border-radius: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
 }
 
 /* Clear visual hierarchy */
-.app-root { 
-  min-height: 100vh; 
-  display: flex; 
-  flex-direction: column; 
-  background: #0f172a;
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #000000;
 }
 
 /* HEADER - Clear and Visible */
@@ -69,46 +101,46 @@ body {
 }
 
 /* Logo with good contrast */
-.logo { 
-  font-weight: 800; 
-  font-size: 1.3rem; 
-  display: flex; 
-  align-items: center; 
-  gap: 10px; 
+.logo {
+  font-weight: 800;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--text-high);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.logo span { 
+.logo span {
   font-size: 1.6rem;
   color: #60a5fa; /* Bright blue for visibility */
 }
 
 /* Navigation - Clear and Distinct */
-.nav-links { 
-  display: flex; 
-  gap: 8px; 
+.nav-links {
+  display: flex;
+  gap: 8px;
   align-items: center;
 }
 
-.nav-links a { 
-  text-decoration: none; 
-  color: var(--text-medium); 
-  padding: 10px 16px; 
-  border-radius: 10px; 
-  transition: all 0.2s ease; 
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-medium);
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
   font-weight: 500;
   border: 1px solid transparent;
   background: rgba(255, 255, 255, 0.05);
 }
 
-.nav-links a:hover { 
+.nav-links a:hover {
   color: var(--text-high);
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--border-medium);
 }
 
-.nav-links a.active { 
+.nav-links a.active {
   color: #ffffff;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   border-color: #3b82f6;
@@ -117,11 +149,11 @@ body {
 }
 
 /* Theme Toggle - Clear Button */
-.theme-toggle { 
-  border-radius: 10px; 
-  border: none; 
-  padding: 10px 16px; 
-  cursor: pointer; 
+.theme-toggle {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
   background: linear-gradient(135deg, #f59e0b, #ef4444);
   color: white;
   font-weight: 600;
@@ -135,33 +167,33 @@ body {
 }
 
 /* MAIN CONTENT - Clean and Readable */
-.app-main { 
-  flex: 1; 
-  padding: 24px; 
-  padding-top: calc(var(--header-height) + 24px); 
-  background: #0f172a;
+.app-main {
+  flex: 1;
+  padding: 24px;
+  padding-top: calc(var(--header-height) + 24px);
+  background: #0f172ae5;
   max-width: 1400px;
   margin: 0 auto;
+   /* background-image: url('/assets/download.jpeg'); */
   width: 100%;
 }
 
 /* Remove overwhelming background effects */
-.app-main::before { 
-  content: ''; 
-  position: fixed; 
+.app-main::before {
+  content: '';
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1; 
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+  z-index: -1;
+  background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
   pointer-events: none;
 }
 
 /* GLASS CARDS - Clear and Functional */
-.glass-card { 
+.glass-card {
   background: var(--bg-card);
   border-radius: 12px;
   border: 1px solid var(--border-medium);
@@ -171,7 +203,7 @@ body {
   margin-bottom: 16px;
 }
 
-.glass-card h2, 
+.glass-card h2,
 .glass-card h3 {
   color: var(--text-high);
   margin-bottom: 12px;
@@ -184,40 +216,106 @@ body {
 }
 
 /* Remove floating footer if it's causing issues */
-.app-root::after { 
-  display: none; 
+.app-root::after {
+  display: none;
 }
 
 /* UTILITY CLASSES for better text hierarchy */
-.text-high { color: var(--text-high) !important; font-weight: 600; }
-.text-medium { color: var(--text-medium) !important; }
-.text-muted { color: var(--text-muted) !important; }
-.text-dim { color: var(--text-dim) !important; }
+.text-high {
+  color: var(--text-high) !important;
+  font-weight: 600;
+}
+.text-medium {
+  color: var(--text-medium) !important;
+}
+.text-muted {
+  color: var(--text-muted) !important;
+}
+.text-dim {
+  color: var(--text-dim) !important;
+}
 
-.bg-panel { background: var(--bg-panel) !important; }
-.bg-card { background: var(--bg-card) !important; }
+.bg-panel {
+  background: var(--bg-panel) !important;
+}
+.bg-card {
+  background: var(--bg-card) !important;
+}
 
-.border-strong { border-color: var(--border-strong) !important; }
-.border-medium { border-color: var(--border-medium) !important; }
+.border-strong {
+  border-color: var(--border-strong) !important;
+}
+.border-medium {
+  border-color: var(--border-medium) !important;
+}
 
 /* Form elements - Clear and visible */
-input, textarea, select {
-  background: rgba(255, 255, 255, 0.1) !important;
+/* Inputs: ensure high-contrast text and placeholders across native and MUI inputs */
+input,
+textarea,
+select,
+.MuiInputBase-input,
+.MuiOutlinedInput-input,
+.MuiFilledInput-input {
+  background: transparent !important;
   border: 1px solid var(--border-medium) !important;
-  color: var(--text-high) !important;
-  padding: 12px 16px !important;
+  color: var(--text) !important;
+  padding: 10px 12px !important;
   border-radius: 8px !important;
   font-size: 14px !important;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus,
+.MuiInputBase-input:focus,
+.MuiOutlinedInput-input:focus,
+.MuiFilledInput-input:focus {
   outline: none !important;
   border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08) !important;
 }
 
-input::placeholder {
-  color: var(--text-dim) !important;
+input::placeholder,
+textarea::placeholder,
+.MuiInputBase-input::placeholder,
+.MuiOutlinedInput-input::placeholder {
+  color: var(--muted-2) !important;
+  opacity: 1 !important;
+}
+
+/* MUI labels and helper text coloring */
+.MuiInputLabel-root {
+  color: var(--muted-2) !important;
+}
+.MuiFormHelperText-root {
+  color: var(--muted-2) !important;
+}
+
+/* Make MUI Paper and Outlined inputs follow the dark theme so inputs are readable */
+.MuiPaper-root {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+}
+
+.MuiOutlinedInput-root {
+  background: var(--panel) !important;
+  border-radius: 8px;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-1) !important;
+}
+
+.MuiInputBase-root {
+  color: var(--text) !important;
+}
+
+/* Force better contrast for native autofill on Chrome */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--text) !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Buttons - Clear states */
@@ -282,7 +380,8 @@ tr:hover td {
 }
 
 /* Code blocks */
-pre, code {
+pre,
+code {
   background: rgba(0, 0, 0, 0.3) !important;
   border: 1px solid var(--border-strong) !important;
   color: var(--text-high) !important;
@@ -325,29 +424,29 @@ pre, code {
     padding: 12px 16px;
     gap: 12px;
   }
-  
+
   .logo {
     font-size: 1.1rem;
   }
-  
+
   .logo span {
     font-size: 1.4rem;
   }
-  
+
   .nav-links {
     gap: 4px;
   }
-  
+
   .nav-links a {
     padding: 8px 12px;
     font-size: 0.9rem;
   }
-  
+
   .app-main {
     padding: 16px;
     padding-top: calc(var(--header-height) + 16px);
   }
-  
+
   .glass-card {
     padding: 16px;
   }
@@ -363,11 +462,11 @@ pre, code {
     --bg-panel: #000000;
     --bg-card: #1a1a1a;
   }
-  
+
   .glass-card {
     border-width: 2px;
   }
-  
+
   .app-header {
     border-bottom-width: 3px;
   }
@@ -378,5 +477,63 @@ pre, code {
   * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+/* Auth pages: centered card for login/signup */
+.auth-card {
+  width: 100%;
+  max-width: 520px;
+  align-items: center;
+  background-color: #000000;
+  position: relative; /* keep in flow above the vignette */
+  z-index: 2; /* above overlay */
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--border-1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), var(--card-glow);
+  padding: 20px;
+}
+
+.auth-title {
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.auth-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+.auth-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-transform: none;
+}
+.auth-btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary), #8b5cf6);
+  color: white;
+}
+.auth-btn-danger {
+  border-color: rgba(239, 68, 68, 0.9);
+}
+
+/* Make MUI Alerts blend with dark surface */
+.auth-card .MuiAlert-root {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  border: 1px solid var(--border-1);
+}
+
+@media (max-width: 520px) {
+  .auth-card {
+    padding: 18px;
+  }
+  .auth-actions {
+    flex-direction: column;
+  }
+  .auth-btn {
+    width: 100%;
   }
 }

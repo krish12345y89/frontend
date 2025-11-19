@@ -49,18 +49,18 @@ export default function Login(){
   }
 
   return (
-    <Container sx={{ mt: 4 }}>
-      <Paper sx={{ p: 3 }}>
-        <Typography variant="h5">Login</Typography>
+    <Container className="auth-root" sx={{ mt: 4 }}>
+      <Paper className="auth-card" elevation={6} sx={{ p: 3 }}>
+        <Typography variant="h5" className="auth-title">Login</Typography>
         <Stack spacing={2} sx={{ mt: 2 }}>
           {error && <Alert severity="error">{error}</Alert>}
           {info && <Alert severity="info">{info}</Alert>}
-          <TextField label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
-          <TextField label="Password" type="password" fullWidth value={password} onChange={(e) => setPassword(e.target.value)} />
-          <Stack direction="row" spacing={2}>
-            <Button variant="contained" onClick={handleLogin}>Login</Button>
-            <Button variant="outlined" onClick={handleRefresh}>Refresh</Button>
-            <Button variant="outlined" color="error" onClick={handleLogout}>Logout</Button>
+          <TextField variant="outlined" label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
+          <TextField variant="outlined" label="Password" type="password" fullWidth value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Stack direction="row" spacing={2} className="auth-actions">
+            <Button className="auth-btn auth-btn-primary" variant="contained" onClick={handleLogin}>Login</Button>
+            <Button className="auth-btn" variant="outlined" onClick={handleRefresh}>Refresh</Button>
+            <Button className="auth-btn auth-btn-danger" variant="outlined" color="error" onClick={handleLogout}>Logout</Button>
           </Stack>
         </Stack>
       </Paper>
