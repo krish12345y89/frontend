@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
-  const { login, refresh, logout } = useAuth();
+  const { login, refresh, logout, setUser } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -15,14 +15,40 @@ export default function Login(){
     setError(null);
     try {
       const res = await login({ email, password });
-      if (res && res.message && res.message.includes('OTP')) {
+
+      // Normalize possible token locations
+      const token = res?.token || res?.tokenValue || res?.tokenString || res?.accessToken || res?.response?.token || res?.response?.tokenValue || res?.response?.tokenString || res?.response?.accessToken || null;
+
+      const message = (res && (res.message || res.response?.message || JSON.stringify(res))) || '';
+
+      // Determine if server expects OTP verification
+      const expectsOtp = /otp|verify|verification|one[- ]time/i.test(message) || res?.requiresOtp || res?.response?.requiresOtp || res?.otpRequired || res?.response?.otpRequired;
+
+      if (expectsOtp) {
         setInfo('OTP sent to your email. Check your inbox and verify.');
-        // pass email and token (if provided) to verify page
-        const token = res.token || res.tokenValue || res.tokenString || null;
         navigate('/verify', { state: { email, token } });
-      } else {
-        setError('Login failed');
+        return;
       }
+
+      // If login returned an access token, treat as success
+      if (res && (res.accessToken || res.token || res.response?.accessToken)) {
+        // try to set user if provided
+        if (res.user) setUser(res.user);
+        setInfo('Logged in');
+        navigate('/');
+        return;
+      }
+
+      // Fallback: if response includes success true and no token required, accept login
+      if (res && (res.success === true || res.ok === true)) {
+        if (res.user) setUser(res.user);
+        setInfo('Logged in');
+        navigate('/');
+        return;
+      }
+
+      // Otherwise show server message if present, else generic error
+      setError((res && (res.message || res.response?.message)) || 'Login failed');
     } catch (err) {
       setError(err.message || String(err));
     }
